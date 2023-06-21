@@ -1,5 +1,5 @@
 use clap::Parser;
-
+use log::{error, info, warn , debug};
 /// Dependency-track 的cli程序
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -7,7 +7,6 @@ struct Args {
     // /// Name of the person to greet
     // #[arg(short, long)]
     // name: String,
-
     // /// Number of times to greet
     // #[arg(short, long, default_value_t = 1)]
     // count: u8,
@@ -35,11 +34,12 @@ struct Args {
     rule: Option<String>,
 }
 
-fn main() {
+
+fn main()  {
+    env_logger::Builder::new().filter_level(log::LevelFilter::Debug).init();
     let args = Args::parse();
-    println!("{args:?}");
-    println!("{}", args.url.unwrap());
-    // for _ in 0..args.count {
-    //     println!("Hello {}!", args.name)
-    // }
+    debug!("{args:?}");
+    debug!("{}", args.url.unwrap());
+    debug!("{}", args.key.unwrap());
+     
 }
