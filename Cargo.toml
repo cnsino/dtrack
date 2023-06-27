@@ -2,7 +2,7 @@
 name = "dtrack"
 version = "0.0.2"
 edition = "2021"
-description = "DependencyTrack in the CI"
+description = "Dependency-Track in the CI"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
