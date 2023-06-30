@@ -1,7 +1,7 @@
-use dtrack::builder;
-
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    builder().await;
+async fn main() -> Result<(), dtrack::error::DtrackError> {
+    if let Err(e) = dtrack::builder().await {
+        eprintln!("程序运行出错: {}", e);
+    }
     Ok(())
 }
