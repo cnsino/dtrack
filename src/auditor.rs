@@ -82,9 +82,9 @@ where
                 self.version = Some(version.to_string());
                 return Ok(());
             } else {
-                return Err(DtrackError::CustomInvalidInfo(format!(
-                    "无法从响应获取版本信息"
-                )));
+                return Err(DtrackError::CustomInvalidInfo(
+                    "无法从响应获取版本信息".to_owned()
+                ));
             }
         } else {
             log::debug!("{}", response.status());
@@ -97,9 +97,9 @@ where
             );
             log::error!("连接服务器失败,请检查URL地址及key值!");
         }
-        Err(DtrackError::CustomInvalidInfo(format!(
-            "连接服务器失败,请检查URL地址及key值"
-        )))
+        Err(DtrackError::CustomInvalidInfo(
+            "连接服务器失败,请检查URL地址及key值".to_owned(),
+        ))
     }
 
     pub(crate) async fn read_upload_bom(
@@ -160,9 +160,9 @@ where
             );
             log::error!("上传bom文件失败,请检查URL地址及key值!");
         }
-        Err(DtrackError::CustomInvalidInfo(format!(
-            "上传bom文件失败,请检查URL地址及key值"
-        )))
+        Err(DtrackError::CustomInvalidInfo(
+            "上传bom文件失败,请检查URL地址及key值".to_owned(),
+        ))
     }
 
     pub(crate) async fn poll_bom_token_being_processed(
@@ -222,9 +222,9 @@ where
         } else {
             log::error!("无法从服务端获取项目,请检查URL地址及key值.");
         }
-        Err(DtrackError::CustomInvalidInfo(format!(
-            "无法从服务端获取项目,请检查URL地址及key值"
-        )))
+        Err(DtrackError::CustomInvalidInfo(
+            "无法从服务端获取项目,请检查URL地址及key值".to_owned(),
+        ))
     }
 
     pub(crate) async fn get_project_findings(
@@ -255,14 +255,14 @@ where
             Ok(())
         } else if response.status() == StatusCode::NOT_FOUND {
             log::error!("项目名称及版本不存在");
-            Err(DtrackError::CustomInvalidInfo(format!(
-                "项目名称及版本不存在"
-            )))
+            Err(DtrackError::CustomInvalidInfo(
+                "项目名称及版本不存在".to_owned(),
+            ))
         } else {
             log::error!("无法从服务端获取扫描结果,请检查URL地址及key值.");
-            Err(DtrackError::CustomInvalidInfo(format!(
-                "无法从服务端获取扫描结果,请检查URL地址及key值"
-            )))
+            Err(DtrackError::CustomInvalidInfo(
+                "无法从服务端获取扫描结果,请检查URL地址及key值".to_owned(),
+            ))
         }
     }
 }
